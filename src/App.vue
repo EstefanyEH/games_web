@@ -1,14 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navbar></Navbar>
     <router-view/>
   </div>
 </template>
 
+<script>
+
+import Navbar from '@/components/Navbar.vue'
+import {mapActions} from "vuex";
+
+export default {
+    name: '',
+    // props: {},
+    data: function(){
+        return {}
+    },
+    // computed: {},
+    methods: {
+       ...mapActions(["add_juegos"]),
+    },
+    // watch: {},
+     components: {
+       Navbar
+     },
+    // mixins: [],
+    // filters: {},
+    // -- Lifecycle Methods
+    mounted(){
+      this.add_juegos();
+    }
+    // -- End Lifecycle Methods
+}
+</script>
+
+<style scoped>
+    
+</style>
+
+</script>
+
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

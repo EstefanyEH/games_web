@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div class="container">
+    <h1 class="d-flex justify-content-center pt-5">Lista de Juegos Disponibles</h1>
+    <div class="row py-5">
+      <div class="col-md-4 col-sm-6 mb-4 " v-for="(juego, i) in juegos" :key="i" >
+        <Cards :juego="juego"/>
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import {  mapState } from "vuex";
+import Cards from '../components/Cards.vue'
 export default {
-  name: 'Home',
+  name: "Home",
+
   components: {
-    HelloWorld
-  }
-}
+    Cards
+  },
+  computed: {
+    ...mapState(["juegos"]),
+  },
+ 
+
+
+};
 </script>
+
